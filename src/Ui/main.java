@@ -19,7 +19,7 @@ public class main{
     
     public static void main (String[] args) {
         Monopoly m1 = new Monopoly();
-        m1.CreerPlateau("data.txt");        //NIQUE TA GRAND MERE LOUIS FDP
+        m1.CreerPlateau("data.txt");        //NIQUE TA GRAND MERE KARIM FDP
         
         
 //        for(Carreau c : m1.getCarreaux()){                        //Affiche tout les carreau du monopolyYYYY
