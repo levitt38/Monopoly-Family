@@ -15,4 +15,8 @@ public class Joueur {
 	public void recevoirLoyer(int aL) {
 		throw new UnsupportedOperationException();
 	}
+
+    public Joueur(String _nomJoueur) {
+        this._nomJoueur = _nomJoueur;
+    }
 }

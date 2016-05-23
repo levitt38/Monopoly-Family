@@ -1,5 +1,6 @@
 package Jeu;
 
+import IHM.Questions;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,7 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Monopoly{
-        private ArrayList<Carreau> carreaux = new ArrayList();
+        private ArrayList<Carreau> carreaux = new ArrayList<>();
+        private ArrayList<Joueur> joueurs = new ArrayList<>();
     
 	public void CreerPlateau(String dataFilename){
 		buildGamePlateau(dataFilename);
@@ -64,6 +66,13 @@ public class Monopoly{
 		return data;
 	}
 
+        private void initPartie(){
+            int nb;
+            nb=Questions.askNb("Entrez le nombre de joueurs");
+            for(int i=0;i<nb;i++){
+                this.joueurs.add(new Joueur(Questions.askStr("Entrez le nom du joueur "+Integer.toString(i+1))));
+            }
+        }
     /**
      * @return the carreaux
      */
