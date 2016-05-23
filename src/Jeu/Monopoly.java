@@ -78,6 +78,7 @@ public class Monopoly{
     /**
      * @return the carreaux
      */
+        
     public ArrayList<Carreau> getCarreaux() {
         return carreaux;
     }
@@ -93,6 +94,7 @@ public class Monopoly{
         
         Carreau c = lancerDesAvancer(j); //jet de dès retournant la nouvelle position du joueur j au carreau c
         action(j); //action du joueur j sur la case c
+        System.out.println("bite");
         
     }
 }
