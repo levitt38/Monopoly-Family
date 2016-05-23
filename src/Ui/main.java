@@ -19,10 +19,10 @@ public class main{
     
     public static void main (String[] args) {
         Monopoly m1 = new Monopoly();
-        m1.CreerPlateau("data.txt");        //NIQUE TA GRAND MERE KARIM FDP
+        m1.CreerPlateau("data.txt");
         
         
-//        for(Carreau c : m1.getCarreaux()){                        //Affiche tout les carreau du monopolyYYYY
+//        for(Carreau c : m1.getCarreaux()){                        //Affiche tout les carreau du monopoly
 //            System.out.println(c.getNomCarreau());
 //            System.out.println(c.getNumero());
 //        }

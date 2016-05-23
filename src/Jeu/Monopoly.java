@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class Monopoly{
         private ArrayList<Carreau> carreaux = new ArrayList<>();
         private ArrayList<Joueur> joueurs = new ArrayList<>();
+        
+        //attribut pour jouer un coup et avancer (et les méthodes qui lui sont liées)
     
 	public void CreerPlateau(String dataFilename){
 		buildGamePlateau(dataFilename);
@@ -78,6 +80,20 @@ public class Monopoly{
      */
     public ArrayList<Carreau> getCarreaux() {
         return carreaux;
+    }
+    
+    // /!\ à copier dans la classe contrôleur /!\
+    public Carreau lancerDesAvancer(Joueur j){
+        
+        
+        
+        
+    }
+    public void jouerUnCoup(Joueur j){
+        
+        Carreau c = lancerDesAvancer(j); //jet de dès retournant la nouvelle position du joueur j au carreau c
+        action(j); //action du joueur j sur la case c
+        
     }
 }
 
