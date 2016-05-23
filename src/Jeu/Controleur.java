@@ -22,7 +22,7 @@ public class Controleur {
     }
     
     public Carreau lancerDesAvancer(Joueur j){
-        
+        bitebitebite
         int d1 = lancerD6();
         int d2 = lancerD6();
         Carreau c1 = j.getPositionCourante();
