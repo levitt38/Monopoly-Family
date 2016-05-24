@@ -18,9 +18,7 @@ public class Controleur {
     
     
     private int lancerDes(){
-        
         return (int)(Math.random()*100%6)+1;
-        
     }
     
     public Carreau lancerDesAvancer(Joueur j){
@@ -30,16 +28,16 @@ public class Controleur {
         lancer += lancerDes();
         //Recup position du joueur
         lancer += j.getPositionCourante().getNumero();
+        //Modulo pour rester sur le plateau
+        lancer = lancer%40;
         //Return carreau correspondant
         return monopoly.getCarreau(lancer);
-        
     }
+    
     public void jouerUnCoup(Joueur j){
-        
-        Carreau c = lancerDesAvancer(j); //jet de dès retournant la nouvelle position du joueur j au carreau c
-        action(j); //action du joueur j sur la case c
-        
+        j.setPositionCourante(lancerDesAvancer(j));
     }
+    
     private void initPartie(){
             int nb;
             nb=Questions.askNb("Entrez le nombre de joueurs");
