@@ -5,6 +5,7 @@
  */
 package IHM;
 
+import Jeu.Carreau;
 import Jeu.Gare;
 import Jeu.Joueur;
 
@@ -24,6 +25,14 @@ public class Affichage {
             Questions.affiche(g.getNomCarreau());
         }
         Questions.decrement();
+        Questions.decrement();
+    }
+    
+    public static void AfficherCarreau(Carreau c){
+        Questions.affiche(c.getNomCarreau());
+        Questions.increment();
+        Questions.affiche(c.getClass().toString());
+        Questions.affiche(Integer.toString(c.getNumero()));
         Questions.decrement();
     }
 }
