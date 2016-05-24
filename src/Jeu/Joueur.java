@@ -16,8 +16,9 @@ public class Joueur {
 		throw new UnsupportedOperationException();
 	}
 
-    public Joueur(String _nomJoueur) {
+    public Joueur(String _nomJoueur, Carreau pos) {
         this._nomJoueur = _nomJoueur;
+        this._positionCourante=pos;
     }
     public void recevoirPaie(){
         

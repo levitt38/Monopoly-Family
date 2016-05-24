@@ -5,6 +5,7 @@
  */
 package Jeu;
 
+import IHM.Affichage;
 import IHM.Questions;
 import java.util.Random;
 
@@ -36,15 +37,25 @@ public class Controleur {
     
     public void jouerUnCoup(Joueur j){
         j.setPositionCourante(lancerDesAvancer(j));
+        
     }
     
-    private void initPartie(){
+    public void initPartie(){
             int nb;
             nb=Questions.askNb("Entrez le nombre de joueurs");
             for(int i=0;i<nb;i++){
-                this.monopoly.getJoueurs().add(new Joueur(Questions.askStr("Entrez le nom du joueur "+Integer.toString(i+1))));
+                this.monopoly.addJoueur(new Joueur(Questions.askStr("Entrez le nom du joueur "+Integer.toString(i+1)),this.monopoly.getCarreau(0)));
+                Affichage.AfficherJoueur(this.monopoly.getJoueurs().get(this.monopoly.getJoueurs().size()-1));
+            }
+            for (Joueur j:this.monopoly.getJoueurs()){
+            this.jouerUnCoup(j);
+            Affichage.AfficherJoueur(j);
             }
             
+    }
+
+    public Controleur() {
+        this.monopoly = new Monopoly();
     }
    
 }

@@ -6,6 +6,7 @@
 package Ui;
 
 import Jeu.Carreau;
+import Jeu.Controleur;
 import Jeu.Monopoly;
 
 /**
@@ -18,8 +19,8 @@ public class main{
     
     
     public static void main (String[] args) {
-        Monopoly m1 = new Monopoly();
-        m1.CreerPlateau("data.txt");
+        Controleur c = new Controleur();
+        c.initPartie();
 
        
        
