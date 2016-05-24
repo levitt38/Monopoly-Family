@@ -66,12 +66,15 @@ public class Monopoly{
 		return data;
 	}
 
-        private void initPartie(){
-            int nb;
-            nb=Questions.askNb("Entrez le nombre de joueurs");
-            for(int i=0;i<nb;i++){
-                this.joueurs.add(new Joueur(Questions.askStr("Entrez le nom du joueur "+Integer.toString(i+1))));
-            }
+        public void addJoueur(Joueur j){
+            
+            this.joueurs.add(j);
+            
+        }
+        public ArrayList<Joueur> getJoueurs(){
+            
+            return this.joueurs;
+            
         }
     /**
      * @return the carreaux

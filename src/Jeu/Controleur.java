@@ -5,6 +5,7 @@
  */
 package Jeu;
 
+import IHM.Questions;
 import java.util.Random;
 
 /**
@@ -12,7 +13,8 @@ import java.util.Random;
  * @author mouhatcl
  */
 public class Controleur {
-    private int cesttropfacile;
+    private Monopoly monopoly;
+    
     private static final Random RANDOM = new Random();
     
     private int lancerD6(){
@@ -41,5 +43,12 @@ public class Controleur {
         Carreau c = lancerDesAvancer(j); //jet de dès retournant la nouvelle position du joueur j au carreau c
         action(j); //action du joueur j sur la case c
         
+    }
+    private void initPartie(){
+            int nb;
+            nb=Questions.askNb("Entrez le nombre de joueurs");
+            for(int i=0;i<nb;i++){
+                this.monopoly.getJoueurs().add(new Joueur(Questions.askStr("Entrez le nom du joueur "+Integer.toString(i+1))));
+            }
     }
 }

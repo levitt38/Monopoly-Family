@@ -21,7 +21,7 @@ public class Joueur {
     }
     public void recevoirPaie(){
         
-        
+        throw new UnsupportedOperationException();
         
     }
     public Carreau getPositionCourante(){
