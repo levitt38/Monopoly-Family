@@ -44,5 +44,7 @@ public class Controleur {
             for(int i=0;i<nb;i++){
                 this.monopoly.getJoueurs().add(new Joueur(Questions.askStr("Entrez le nom du joueur "+Integer.toString(i+1))));
             }
+            
     }
+   
 }

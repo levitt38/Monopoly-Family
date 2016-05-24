@@ -88,5 +88,10 @@ public class Monopoly{
     public Carreau getCarreau(int i){
         return this.getCarreaux().get(Integer.toString(i));
     }
+
+    public Monopoly() {
+        this.CreerPlateau("data.txt");
+    }
+    
 }
 
