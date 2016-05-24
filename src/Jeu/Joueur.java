@@ -19,4 +19,14 @@ public class Joueur {
     public Joueur(String _nomJoueur) {
         this._nomJoueur = _nomJoueur;
     }
+    public void recevoirPaie(){
+        
+        
+        
+    }
+    public Carreau getPositionCourante(){
+        
+        return this._positionCourante;
+        
+    }
 }
