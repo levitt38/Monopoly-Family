@@ -6,9 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Monopoly{
-        private ArrayList<Carreau> carreaux = new ArrayList<>();
+        private HashMap<String,Carreau> carreaux = new HashMap<>();
         private ArrayList<Joueur> joueurs = new ArrayList<>();
         
 	public void CreerPlateau(String dataFilename){
@@ -25,19 +26,19 @@ public class Monopoly{
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){
 					System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().add(new Propriete(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
+                                        getCarreaux().put(Integer.toString(i),new Propriete(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
 				}
 				else if(caseType.compareTo("G") == 0){
 					System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().add(new Gare(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
+                                        getCarreaux().put(Integer.toString(i),new Gare(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
 				}
 				else if(caseType.compareTo("C") == 0){
 					System.out.println("Compagnie :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().add(new Compagnie(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
+                                        getCarreaux().put(Integer.toString(i),new Compagnie(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
 				}
 				else if(caseType.compareTo("AU") == 0){
 					System.out.println("Case Autre :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().add(new AutreCarreau(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
+                                        getCarreaux().put(Integer.toString(i),new AutreCarreau(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
 				}
 				else
 					System.err.println("[buildGamePleateau()] : Invalid Data type");
@@ -80,7 +81,7 @@ public class Monopoly{
      * @return the carreaux
      */
         
-    public ArrayList<Carreau> getCarreaux() {
+    public HashMap<String,Carreau> getCarreaux() {
         return carreaux;
     }
 }

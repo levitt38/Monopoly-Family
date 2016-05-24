@@ -29,7 +29,7 @@ public class Controleur {
         int d2 = lancerD6();
         Carreau c1 = j.getPositionCourante();
         int p = c1.getNumero();
-        Carreau c2 = getCarreau(d1+d2+p);
+        Carreau c2 = this.monopoly.getCarreau(d1+d2+p);
         if((p+d1+d2)>= 40){
             
             j.recevoirPaie();
