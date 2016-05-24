@@ -15,27 +15,23 @@ import java.util.Random;
 public class Controleur {
     private Monopoly monopoly;
     
-    private static final Random RANDOM = new Random();
     
-    private int lancerD6(){
+    
+    private int lancerDes(){
         
-        return RANDOM.nextInt(6)+1;
+        return (int)(Math.random()*100%6)+1;
         
     }
     
     public Carreau lancerDesAvancer(Joueur j){
-        
-        int d1 = lancerD6();
-        int d2 = lancerD6();
-        Carreau c1 = j.getPositionCourante();
-        int p = c1.getNumero();
-        Carreau c2 = this.monopoly.getCarreau(d1+d2+p);
-        if((p+d1+d2)>= 40){
-            
-            j.recevoirPaie();
-            
-        }
-        return c2;
+        //Lancer1
+        int lancer = lancerDes();
+        //Lancer2
+        lancer += lancerDes();
+        //Recup position du joueur
+        lancer += j.getPositionCourante().getNumero();
+        //Return carreau correspondant
+        return monopoly.getCarreau(lancer);
         
     }
     public void jouerUnCoup(Joueur j){

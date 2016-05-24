@@ -81,8 +81,12 @@ public class Monopoly{
      * @return the carreaux
      */
         
-    public HashMap<String,Carreau> getCarreaux() {
+    private HashMap<String,Carreau> getCarreaux() {
         return carreaux;
+    }
+    
+    public Carreau getCarreau(int i){
+        return this.getCarreaux().get(Integer.toString(i));
     }
 }
 
