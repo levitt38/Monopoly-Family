@@ -13,11 +13,11 @@ public class Questions {
     private static Scanner scan = new Scanner(System.in);
     private static int tab = 0;
     
-    private static void increment(){
+    public static void increment(){
         tab++;
     }
     
-    private static void decrement(){
+    public static void decrement(){
         tab--;
     }
     
