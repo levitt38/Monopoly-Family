@@ -45,7 +45,7 @@ public class Controleur {
     
     public void jouerUnCoup(Joueur j){
         j.setPositionCourante(lancerDesAvancer(j));
-        Evenement res = Evenement.AchatPossible;
+        Evenement res = j.getPositionCourante().evenementEnCours(j);
         switch(res){
             case PayéLoyer : Questions.affiche("tour"); break;
             default : Questions.affiche("tour"); ;
@@ -53,15 +53,7 @@ public class Controleur {
         
     }
     
-    public Evenement evenementEnCours(Joueur j){
-        if (j.getPositionCourante().getType()==TypeCarreau.AuteCarreau){
-            // not implemented yet
-        }else{
-            CarreauAchetable c = (CarreauAchetable)j.getPositionCourante();
-            if(c.getProprietaire())
-        }
-    }
-    
+       
     public void initPartie(){
             int nb;
             nb=Questions.askNb("Entrez le nombre de joueurs");

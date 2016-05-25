@@ -5,16 +5,27 @@
  */
 package Jeu;
 
+import Data.Evenement;
+import Data.TypeCarreau;
+
 /**
  *
  * @author mouhatcl
  */
 public abstract class CarreauAchetable extends Carreau{
 	private Joueur _proprietaire;
+        private int prixAchat;
+
+    public CarreauAchetable(int numero, String nomCarreau,int prixAchat) {
+        super(numero, nomCarreau);
+        this.prixAchat = prixAchat;
+    }
     public CarreauAchetable(int numero, String nomCarreau) {
         super(numero, nomCarreau);
     }
-    
+        public int getPrixAchat(){
+            return this.prixAchat;
+        }
 
 	public abstract int calculLoyer() ;
 
@@ -26,5 +37,21 @@ public abstract class CarreauAchetable extends Carreau{
 		throw new UnsupportedOperationException();
 	}
  
-
+        public boolean verifierAchat(Joueur j){
+            return this.calculLoyer()<j.getCash();
+        }
+        
+        public Evenement evenementEnCours(Joueur j){
+            CarreauAchetable c = (CarreauAchetable)j.getPositionCourante();
+            if(c.getProprietaire()!=null){
+                j.payerLoyer(this.calculLoyer());
+                return Evenement.PayéLoyer;
+            }else{
+                if(c.verifierAchat(j)){
+                    return Evenement.AchatPossible;
+                }else{
+                    return Evenement.Rien;
+                }
+            }
+        }
 }

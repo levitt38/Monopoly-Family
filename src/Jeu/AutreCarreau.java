@@ -1,6 +1,7 @@
 
 package Jeu;
 
+import Data.Evenement;
 import Data.TypeCarreau;
 
 /**
@@ -23,4 +24,11 @@ public class AutreCarreau extends Carreau {
     public TypeCarreau getType(){
         return TypeCarreau.AuteCarreau;
     }
+
+    @Override
+    public Evenement evenementEnCours(Joueur j) {
+        return Evenement.Rien;
+    }
+    
+    
 }

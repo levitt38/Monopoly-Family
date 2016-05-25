@@ -21,6 +21,10 @@ public class Propriete extends CarreauAchetable {
 	public int calculLoyer() {
 		throw new UnsupportedOperationException();
 	}
+
+    public Propriete(int numero, String nomCarreau, int prixAchat) {
+        super(numero, nomCarreau, prixAchat);
+    }
         
         @Override
         public TypeCarreau getType(){

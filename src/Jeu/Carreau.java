@@ -1,5 +1,6 @@
 package Jeu;
 
+import Data.Evenement;
 import Data.TypeCarreau;
 
 public abstract class Carreau {
@@ -22,5 +23,7 @@ public abstract class Carreau {
     }
     
     public abstract TypeCarreau getType();
+    
+    public abstract Evenement evenementEnCours(Joueur j);
 
 }

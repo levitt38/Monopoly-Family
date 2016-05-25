@@ -17,6 +17,10 @@ public class Gare extends CarreauAchetable {
 		throw new UnsupportedOperationException();
 	}
 
+    public Gare(int numero, String nomCarreau, int prixAchat) {
+        super(numero, nomCarreau, prixAchat);
+    }
+
         
         @Override
         public TypeCarreau getType(){

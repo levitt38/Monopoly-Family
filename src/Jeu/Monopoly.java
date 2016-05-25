@@ -26,15 +26,15 @@ public class Monopoly{
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){
 					//System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().put(Integer.toString(i),new Propriete(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
+                                        getCarreaux().put(Integer.toString(i),new Propriete(Integer.valueOf(data.get(i)[1]),data.get(i)[2],Integer.valueOf(data.get(i)[3])));
 				}
 				else if(caseType.compareTo("G") == 0){
 					//System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().put(Integer.toString(i),new Gare(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
+                                        getCarreaux().put(Integer.toString(i),new Gare(Integer.valueOf(data.get(i)[1]),data.get(i)[2],Integer.valueOf(data.get(i)[3])));
 				}
 				else if(caseType.compareTo("C") == 0){
 					//System.out.println("Compagnie :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().put(Integer.toString(i),new Compagnie(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
+                                        getCarreaux().put(Integer.toString(i),new Compagnie(Integer.valueOf(data.get(i)[1]),data.get(i)[2],Integer.valueOf(data.get(i)[3])));
 				}
 				else if(caseType.compareTo("AU") == 0){
 					//System.out.println("Case Autre :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);

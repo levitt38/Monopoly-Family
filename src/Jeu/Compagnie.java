@@ -19,6 +19,10 @@ public class Compagnie extends CarreauAchetable {
 		throw new UnsupportedOperationException();
 	}
 
+    public Compagnie(int numero, String nomCarreau, int prixAchat) {
+        super(numero, nomCarreau, prixAchat);
+    }
+
         @Override
         public TypeCarreau getType(){
             return TypeCarreau.Compagnie;
