@@ -19,7 +19,8 @@ public class Controleur {
     private Monopoly monopoly;
     
     public void payerJoueur(Joueur j){
-        Questions.affiche("tu as reçu ton dû");
+        j.recevoirPaie();
+        Questions.affiche("tu as reçu ton dû bro !");
     }
     
     private int lancerDes(){
@@ -33,8 +34,11 @@ public class Controleur {
         lancer += lancerDes();
         //Recup position du joueur
         lancer += j.getPositionCourante().getNumero();
-        //Modulo pour rester sur le plateau
-        lancer = lancer%40;
+        //Est-ce un jour de paye ?
+        if(lancer>40){
+            payerJoueur(j);
+            lancer = lancer%40;
+        } else {lancer = lancer%40;}
         //Return carreau correspondant
         return monopoly.getCarreau(lancer);
     }

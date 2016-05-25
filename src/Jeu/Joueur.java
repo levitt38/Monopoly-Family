@@ -20,11 +20,11 @@ public class Joueur {
         this._nomJoueur = _nomJoueur;
         this._positionCourante=pos;
     }
+ 
     public void recevoirPaie(){
-        
-        throw new UnsupportedOperationException();
-        
+        this._cash += 200;
     }
+    
     public Carreau getPositionCourante(){
         
         return this._positionCourante;
