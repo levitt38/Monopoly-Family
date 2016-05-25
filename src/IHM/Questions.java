@@ -37,4 +37,15 @@ public class Questions {
         affiche(s);
         return scan.nextLine();
     }
+    
+    public static int voulezVousAcheter(String nomCarreau){
+                int choix = 0; boolean valide = false;
+                do{
+                    affiche("Voulez-vous acheter "+nomCarreau+" ? | (1)Oui/(0)Non");
+                    try {
+                        choix  = scan.nextInt(); if(choix!=1 && choix!=0){throw new Exception();} valide = true;
+                    } catch (Exception e){affiche(TextColors.RED+"Joue pas au con bonhomme !"+TextColors.RESET);}
+                }while(! valide);  
+            return choix;
+    }
 }

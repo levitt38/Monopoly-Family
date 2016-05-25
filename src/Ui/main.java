@@ -21,7 +21,7 @@ public class main{
     public static void main (String[] args) {
         Controleur c = new Controleur();
         c.initPartie();
-
+        
        
        
        

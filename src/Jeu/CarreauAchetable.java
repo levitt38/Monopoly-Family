@@ -7,6 +7,8 @@ package Jeu;
 
 import Data.Evenement;
 import Data.TypeCarreau;
+import IHM.Questions;
+import IHM.TextColors;
 
 /**
  *
@@ -19,21 +21,63 @@ public abstract class CarreauAchetable extends Carreau{
     public CarreauAchetable(int numero, String nomCarreau,int prixAchat) {
         super(numero, nomCarreau);
         this.prixAchat = prixAchat;
+        this._proprietaire = null;
     }
-    public CarreauAchetable(int numero, String nomCarreau) {
-        super(numero, nomCarreau);
-    }
+    
+        public abstract TypeCarreau getType();
+        
         public int getPrixAchat(){
-            return this.prixAchat;
-        }
+                return this.prixAchat;
+            }
 
 	public abstract int calculLoyer() ;
+        
+        public boolean estLibre(){
+            return (this.getProprietaire()==null);
+        }
 
+        public void actionProprieteLibre(Joueur j){
+            int choix = Questions.voulezVousAcheter(this.getNomCarreau());
+            if(choix == 0){
+                return;
+            } else {
+                if(j.getCash()>=this.getPrixAchat()){
+                    this.setProprietaire(j);
+                    j.addCarreauAchetable(this);
+                    j.modifCash(-this.getPrixAchat());
+                } else{
+                    Questions.affiche(TextColors.RED+"Vous n'avez pas assez d'argent, revenez plus tard"+TextColors.RESET);
+                }
+            }
+        }
+            
+        public void actionProprietePrise(Joueur j){
+            Joueur proprio = this.getProprietaire();
+            if(proprio.equals(j)){
+                Questions.affiche("Vous êtes sur une de vos propriété");
+            } else {
+                int loyer = this.calculLoyer();
+                j.modifCash(-loyer);
+                proprio.modifCash(loyer);
+                Questions.affiche(j.getNomJoueur()+" a payé un loyer de "+loyer+"€ a "+proprio.getNomJoueur());
+            }
+        }
+        
+	public void action(Joueur aJ) {
+            if(! this.estLibre()){
+                this.actionProprietePrise(aJ);
+            } else{ this.actionProprieteLibre(aJ); }
+	}
+        
 	public Joueur getProprietaire() {
 		return this._proprietaire;
 	}
 
-	public void acheterPropriete(Joueur aJ) {
+        public void setProprietaire(Joueur _proprietaire) {
+            this._proprietaire = _proprietaire;
+        }
+        
+        public void acheterPropriete(Joueur aJ) {
 		throw new UnsupportedOperationException();
 	}
  
@@ -44,7 +88,7 @@ public abstract class CarreauAchetable extends Carreau{
         public Evenement evenementEnCours(Joueur j){
             CarreauAchetable c = (CarreauAchetable)j.getPositionCourante();
             if(c.getProprietaire()!=null){
-                j.payerLoyer(this.calculLoyer());
+                //j.payerLoyer(this.calculLoyer());
                 return Evenement.PayéLoyer;
             }else{
                 if(c.verifierAchat(j)){
@@ -54,4 +98,6 @@ public abstract class CarreauAchetable extends Carreau{
                 }
             }
         }
+        
+        
 }

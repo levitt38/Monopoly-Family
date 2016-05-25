@@ -9,6 +9,7 @@ import Data.Evenement;
 import Data.TypeCarreau;
 import IHM.Affichage;
 import IHM.Questions;
+import IHM.TextColors;
 import java.util.Random;
 
 /**
@@ -18,9 +19,13 @@ import java.util.Random;
 public class Controleur {
     private Monopoly monopoly;
     
+    public Controleur() {
+        this.monopoly = new Monopoly();
+    }
+    
     public void payerJoueur(Joueur j){
         j.recevoirPaie();
-        Questions.affiche("tu as reçu ton dû bro !");
+        Questions.affiche(TextColors.GREEN+"tu as reçu ta paye "+j.getNomJoueur()+" !"+TextColors.RESET);
     }
     
     private int lancerDes(){
@@ -32,6 +37,10 @@ public class Controleur {
         int lancer = lancerDes();
         //Lancer2
         lancer += lancerDes();
+        //Cette ligne sert a récupérer le montant des dès du lancer pour réaliser le loyer d'une compagnie
+        for (Compagnie c : this.getMonopoly().getCompagnies()){
+            c.setDernierLancer(lancer);
+        }
         //Recup position du joueur
         lancer += j.getPositionCourante().getNumero();
         //Est-ce un jour de paye ?
@@ -42,6 +51,7 @@ public class Controleur {
         //Return carreau correspondant
         return monopoly.getCarreau(lancer);
     }
+    
     
     public void jouerUnCoup(Joueur j){
         j.setPositionCourante(lancerDesAvancer(j));
@@ -58,7 +68,7 @@ public class Controleur {
             int nb;
             nb=Questions.askNb("Entrez le nombre de joueurs");
             for(int i=0;i<nb;i++){
-                this.monopoly.addJoueur(new Joueur(Questions.askStr("Entrez le nom du joueur "+Integer.toString(i+1)),this.monopoly.getCarreau(0)));
+                this.monopoly.addJoueur(new Joueur(Questions.askStr("Entrez le nom du joueur "+Integer.toString(i+1)),this.monopoly.getCarreau(1)));
                 Affichage.AfficherJoueur(this.monopoly.getJoueurs().get(this.monopoly.getJoueurs().size()-1));
             }
             for (Joueur j:this.monopoly.getJoueurs()){
@@ -68,8 +78,9 @@ public class Controleur {
             
     }
 
-    public Controleur() {
-        this.monopoly = new Monopoly();
+    public Monopoly getMonopoly() {
+        return monopoly;
     }
    
+     
 }

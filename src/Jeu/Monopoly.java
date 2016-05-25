@@ -7,9 +7,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Monopoly{
         private HashMap<String,Carreau> carreaux = new HashMap<>();
+        private HashSet<Compagnie> compagnies = new HashSet<>();
         private ArrayList<Joueur> joueurs = new ArrayList<>();
         
 	public void CreerPlateau(String dataFilename){
@@ -26,19 +28,23 @@ public class Monopoly{
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){
 					//System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().put(Integer.toString(i),new Propriete(Integer.valueOf(data.get(i)[1]),data.get(i)[2],Integer.valueOf(data.get(i)[3])));
+                                        getCarreaux().put(Integer.toString(i+1),new Propriete(Integer.valueOf(data.get(i)[1]),data.get(i)[2],
+                                                                                                Integer.valueOf(data.get(i)[4]),Integer.valueOf(data.get(i)[5])));
 				}
 				else if(caseType.compareTo("G") == 0){
 					//System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().put(Integer.toString(i),new Gare(Integer.valueOf(data.get(i)[1]),data.get(i)[2],Integer.valueOf(data.get(i)[3])));
+                                        getCarreaux().put(Integer.toString(i+1),new Gare(Integer.valueOf(data.get(i)[1]),data.get(i)[2],Integer.valueOf(data.get(i)[3])));
 				}
 				else if(caseType.compareTo("C") == 0){
 					//System.out.println("Compagnie :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().put(Integer.toString(i),new Compagnie(Integer.valueOf(data.get(i)[1]),data.get(i)[2],Integer.valueOf(data.get(i)[3])));
+                                        // On doit ajouter le même objet dans les collections de carreaux et de compagnies (sert a leur calculLoyer())
+                                        Compagnie c = new Compagnie(Integer.valueOf(data.get(i)[1]),data.get(i)[2],Integer.valueOf(data.get(i)[3]));
+                                        getCarreaux().put(Integer.toString(i+1),c);
+                                        getCompagnies().add(c);
 				}
 				else if(caseType.compareTo("AU") == 0){
 					//System.out.println("Case Autre :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        getCarreaux().put(Integer.toString(i),new AutreCarreau(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
+                                        getCarreaux().put(Integer.toString(i+1),new AutreCarreau(Integer.valueOf(data.get(i)[1]),data.get(i)[2]));
 				}
 				else
                                     if (i!=40){
@@ -85,6 +91,10 @@ public class Monopoly{
         
     private HashMap<String,Carreau> getCarreaux() {
         return carreaux;
+    }
+
+    public HashSet<Compagnie> getCompagnies() {
+        return compagnies;
     }
     
     public Carreau getCarreau(int i){
