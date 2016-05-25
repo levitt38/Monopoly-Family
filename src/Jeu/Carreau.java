@@ -1,5 +1,7 @@
 package Jeu;
 
+import Data.TypeCarreau;
+
 public abstract class Carreau {
 	private int _numero;
 	private String _nomCarreau;
@@ -18,5 +20,7 @@ public abstract class Carreau {
     public String getNomCarreau() {
         return _nomCarreau;
     }
+    
+    public abstract TypeCarreau getType();
 
 }

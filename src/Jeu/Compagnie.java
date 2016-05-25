@@ -1,8 +1,10 @@
 package Jeu;
 
+import Data.TypeCarreau;
 
-public class Compagnie extends Carreau {
-	private Joueur _proprietaire;
+
+public class Compagnie extends CarreauAchetable {
+
 
         public Compagnie(int num, String chaine){
             super(num,chaine);
@@ -12,15 +14,13 @@ public class Compagnie extends Carreau {
 		throw new UnsupportedOperationException();
 	}
 
-	private int calculLoyer() {
+        @Override
+	public int calculLoyer() {
 		throw new UnsupportedOperationException();
 	}
 
-	private Joueur getProprietaire() {
-		return this._proprietaire;
-	}
-
-	private void acheterPropriete(Joueur aJ) {
-		throw new UnsupportedOperationException();
-	}
+        @Override
+        public TypeCarreau getType(){
+            return TypeCarreau.Compagnie;
+        }
 }

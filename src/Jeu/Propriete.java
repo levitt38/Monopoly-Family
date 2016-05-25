@@ -1,13 +1,13 @@
 
 package Jeu;
 
+import Data.TypeCarreau;
+
 /**
  *
  * @author nourik
  */
-public class Propriete extends Carreau {
-	private Joueur proprietaire;
-        
+public class Propriete extends CarreauAchetable {        
         
         public Propriete(int num, String chaine){
             super(num,chaine);
@@ -17,15 +17,13 @@ public class Propriete extends Carreau {
 		throw new UnsupportedOperationException();
 	}
 
-	private int calculLoyer() {
+        @Override
+	public int calculLoyer() {
 		throw new UnsupportedOperationException();
 	}
-
-	private Joueur getProprietaire() {
-		return this.proprietaire;
-	}
-
-	private void acheterPropriete(Joueur aJ) {
-		throw new UnsupportedOperationException();
-	}
+        
+        @Override
+        public TypeCarreau getType(){
+            return TypeCarreau.PropriteteAConstruire;
+        }
 }

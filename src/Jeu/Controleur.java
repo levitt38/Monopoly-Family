@@ -5,6 +5,8 @@
  */
 package Jeu;
 
+import Data.Evenement;
+import Data.TypeCarreau;
 import IHM.Affichage;
 import IHM.Questions;
 import java.util.Random;
@@ -16,7 +18,9 @@ import java.util.Random;
 public class Controleur {
     private Monopoly monopoly;
     
-    
+    public void payerJoueur(Joueur j){
+        Questions.affiche("tu as reçu ton dû");
+    }
     
     private int lancerDes(){
         return (int)(Math.random()*100%6)+1;
@@ -37,7 +41,21 @@ public class Controleur {
     
     public void jouerUnCoup(Joueur j){
         j.setPositionCourante(lancerDesAvancer(j));
+        Evenement res = Evenement.AchatPossible;
+        switch(res){
+            case PayéLoyer : Questions.affiche("tour"); break;
+            default : Questions.affiche("tour"); ;
+        }
         
+    }
+    
+    public Evenement evenementEnCours(Joueur j){
+        if (j.getPositionCourante().getType()==TypeCarreau.AuteCarreau){
+            // not implemented yet
+        }else{
+            CarreauAchetable c = (CarreauAchetable)j.getPositionCourante();
+            if(c.getProprietaire())
+        }
     }
     
     public void initPartie(){
